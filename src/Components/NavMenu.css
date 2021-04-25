@@ -1,0 +1,26 @@
+.menuWrapper{
+    display: none;
+    position: absolute;
+    background-color: white;
+    flex-direction: column;
+    justify-self: center;
+    top: 10vh;
+    font-weight: var(--ff-wght-button);
+    border-radius: 8px;
+    overflow:hidden;
+    width: 80vw;
+}
+
+.menuWrapper>a{
+    margin: 0;
+    text-decoration: none;
+    color: var(--clr-black);
+    border-bottom: 2px double rgba(128, 128, 128, 0.342);
+    /* box-shadow: 1px 0 1px 0px gray; */
+    padding: 1.5em 0 1.5em 1em;
+    font-weight: var(--ff-wght-button);
+}
+
+.push{
+    margin-left: auto;
+}
