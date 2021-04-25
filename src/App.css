@@ -1,3 +1,12 @@
+.mobile{
+    background-image: url("./images/image-hero-mobile.jpg");
+    background-position: 50% -5px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 100%;
+    height: 100vh;
+}
+
 .defaultTheme{
     --clr-primary-cyan: hsl(176, 50%, 47%);
     --clr-secondary-cyan: hsl(176, 72%, 28%);
@@ -12,3 +21,4 @@
     font-family: 'Commissioner', sans-serif;
     width: 100%;
 }
+

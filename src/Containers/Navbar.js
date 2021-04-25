@@ -18,14 +18,18 @@ class Navbar extends Component{
     menuClicked = () =>{
         let isMenuOpen = this.state.isMenuOpen;
         const navMenuVisibility = document.getElementById("menuIcon");
+        const navBar = document.getElementById("navBar");
 
         if(isMenuOpen === true){
             console.log("open");
             navMenuVisibility.style.display = "none";
+            navBar.style.backgroundColor = "transparent";
             this.setState({isMenuOpen: false})
         } else {
             console.log("close");
             navMenuVisibility.style.display = "flex";
+            navBar.style.backgroundColor = "linear-gradient(to bottom, rgba(0, 0, 0, 0.89)0% 40%, hsla(0,0,0,0))";
+
             this.setState({isMenuOpen: true})
         }
         return;
@@ -40,7 +44,7 @@ class Navbar extends Component{
         }
 
         return(
-            <nav>
+            <nav id="navBar">
                 <img src={Logo} alt="crowdfund logo" className="logo" />
                 <img src={MenuImg} id="MenuIcon" alt="menu icon" className="menuIcon" onClick={this.menuClicked} />
                 <NavMenu />
