@@ -5,6 +5,9 @@
     background-size: 100%;
     width: 100%;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .defaultTheme{
@@ -17,8 +20,28 @@
     --ff-wght-button: 500;
     --ff-wght-heading: 700;
 
+    box-sizing: border-box;
     font-size: 16px;
     font-family: 'Commissioner', sans-serif;
     width: 100%;
+    background-color:whitesmoke;
+}
+
+.articleWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30vh;
+    width: 80%;
+}
+
+.card{
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    background-color: white;
+    border: 1px solid rgba(224, 221, 221, 0.493);
+    margin-bottom: 1.5em;
+    padding: 1em;
 }
 

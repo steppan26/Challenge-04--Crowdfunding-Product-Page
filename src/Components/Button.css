@@ -1,0 +1,14 @@
+.btn{
+    cursor: pointer;
+    display: inline;
+    font-weight: var(--ff-wght-button);
+    border-radius: 25px;
+    padding: 1em 2em 1em 2em;
+    background-color: var(--clr-primary-cyan);
+    color: white;
+    margin: 0;
+}
+
+.btn:hover{
+    background-color: var(--clr-secondary-cyan);
+}

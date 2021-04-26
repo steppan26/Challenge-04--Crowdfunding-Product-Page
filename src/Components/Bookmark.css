@@ -1,0 +1,21 @@
+.bookmarkBtn{
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: gray;
+    height: auto;
+    background-image: url("../images/icon-bookmark.svg");
+    background-size: 50px im !important;
+    background-repeat: no-repeat;
+    background-position: left;
+    max-height: fit-content;
+}
+
+.bookmarkImg{
+    position: relative;
+}
+
+.bookmarkText{
+    font-weight: var(--ff-wght-button);
+}
