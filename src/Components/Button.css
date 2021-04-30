@@ -2,8 +2,8 @@
     cursor: pointer;
     display: inline;
     font-weight: var(--ff-wght-button);
-    border-radius: 25px;
-    padding: 1em 2em 1em 2em;
+    border-radius: 35px;
+    padding: 1em 1.8em 1em 1.8em;
     background-color: var(--clr-primary-cyan);
     color: white;
     margin: 0;

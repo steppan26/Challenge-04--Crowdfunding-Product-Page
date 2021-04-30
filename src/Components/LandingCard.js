@@ -13,8 +13,7 @@ const LandingCard = () => {
             <div className="btnsSection">
                 <Button className="btnCta"
                     bgColor='var(--clr-primary-cyan)'
-                    textColor='var(--clr-black)'
-
+                    textColor='white'
                     >
                     Back this project
                 </Button>

@@ -1,3 +1,6 @@
+:root{
+    box-sizing: border-box;
+}
 .mobile{
     background-image: url("./images/image-hero-mobile.jpg");
     background-position: 50% -5px;
@@ -14,7 +17,7 @@
     --clr-primary-cyan: hsl(176, 50%, 47%);
     --clr-secondary-cyan: hsl(176, 72%, 28%);
     --clr-black: hsl(0, 0%, 0%);
-    --clr-dark-gray: hsl(0, 0%, 48%);
+    --clr-dark-gray: hsla(0, 0%, 48%, 0.712);
 
     --ff-wght-text: 400;
     --ff-wght-button: 500;
@@ -32,16 +35,17 @@
     flex-direction: column;
     align-items: center;
     padding-top: 30vh;
-    width: 80%;
+    width: 90%;
 }
 
 .card{
+    box-sizing: border-box;
     width: 100%;
     height: auto;
     border-radius: 12px;
     background-color: white;
     border: 1px solid rgba(224, 221, 221, 0.493);
     margin-bottom: 1.5em;
-    padding: 1em;
+    padding: 1em 1.5em;
 }
 

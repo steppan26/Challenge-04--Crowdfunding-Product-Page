@@ -18,14 +18,19 @@
 .masterclassLogo{
     position: relative;
     justify-self: baseline;
-    width: 15vw;
-    top: -25px;
+    width: 60px;
+    top: -30px;
 }
 
 .btnsSection{
     display: flex;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
     padding-top: 1em;
     padding-bottom: 1em;
+}
+
+.btnsSection .btn{
+    font-size: larger;
 }
