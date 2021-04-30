@@ -14,6 +14,7 @@ const LandingCard = () => {
                 <Button className="btnCta"
                     bgColor='var(--clr-primary-cyan)'
                     textColor='white'
+                    fontSize='1em'
                     >
                     Back this project
                 </Button>

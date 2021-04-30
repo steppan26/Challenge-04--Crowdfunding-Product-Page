@@ -21,18 +21,18 @@ class Navbar extends Component{
         const navBar = document.getElementById("navBar");
 
         if(isMenuOpen === true){
-            console.log("open");
+            console.log("closed");
             navMenuVisibility.style.display = "none";
             navBar.style.backgroundColor = "transparent";
             this.setState({isMenuOpen: false})
         } else {
-            console.log("close");
+            console.log("open");
             navMenuVisibility.style.display = "flex";
             navBar.style.backgroundColor = "linear-gradient(to bottom, rgba(0, 0, 0, 0.89)0% 40%, hsla(0,0,0,0))";
-
             this.setState({isMenuOpen: true})
         }
         return;
+
     }
 
     render(){

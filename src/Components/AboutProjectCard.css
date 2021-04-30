@@ -1,0 +1,14 @@
+.aboutProject{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--clr-dark-gray);
+    text-align: left;
+}
+
+.aboutProject>h1{
+    color: var(--clr-black);
+    align-self: flex-start;
+    font-size: 1.2em;
+    font-weight: var(--ff-wght-heading);
+}

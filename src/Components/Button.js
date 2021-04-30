@@ -7,7 +7,8 @@ const Button = (props) =>{
             <h4 className="btn"
             style={{
                 backgroundColor:`${props.bgColor}`,
-                color:`${props.textColor}`
+                color:`${props.textColor}`,
+                fontSize:`${props.fontSize}`
                 }}
                 >
                 {props.children}

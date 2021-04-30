@@ -7,17 +7,19 @@
     background-repeat: no-repeat;
     background-size: 100%;
     width: 100%;
-    height: 100vh;
+    max-width: 375px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 auto;
 }
 
 .defaultTheme{
     --clr-primary-cyan: hsl(176, 50%, 47%);
     --clr-secondary-cyan: hsl(176, 72%, 28%);
     --clr-black: hsl(0, 0%, 0%);
-    --clr-dark-gray: hsla(0, 0%, 48%, 0.712);
+    --clr-dark-gray: hsla(0, 0%, 50%, 0.6);
 
     --ff-wght-text: 400;
     --ff-wght-button: 500;
@@ -28,6 +30,8 @@
     font-family: 'Commissioner', sans-serif;
     width: 100%;
     background-color:whitesmoke;
+    line-height: 1.6;
+    letter-spacing: -0.7px;
 }
 
 .articleWrapper{

@@ -1,0 +1,56 @@
+.pledgeSection{
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid var(--clr-dark-gray);
+    padding: 1em;
+    border-radius: 8px;
+    margin: 2em 0;
+    padding: 1.4em;
+    padding-bottom: 2.5em;
+    height: fit-content;
+}
+
+.valueWrapper{
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    margin-bottom: 2em;
+}
+
+.PledgeValue{
+    margin: 0;
+    font-size: 2.5em;
+    color: black;
+}
+
+.valueWrapper>h5{
+    margin: 0;
+    margin-left: 0.5em;
+    font-size: 1.2em;
+    font-weight: var(--ff-wght-button);
+}
+
+.pledgeSection>h2{
+    font-weight: var(--ff-wght-heading);
+    font-size: 1em;
+    margin: 0;
+    color: var(--clr-black);
+}
+
+.pledgeSection>h3{
+    font-weight: var(--ff-wght-button);
+    margin: 0;
+    color: var(--clr-primary-cyan);
+    font-size: 1em;
+}
+
+
+
+.pledgeText{
+    font-weight: var(--ff-wght-button);
+}
+
+.btnPledge{
+    margin-top: 3em !important;
+    margin-bottom: 3em !important;
+}

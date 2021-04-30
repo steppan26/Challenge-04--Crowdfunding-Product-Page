@@ -2,6 +2,7 @@ import React from 'react';
 import './NavMenu.css';
 
 const NavMenu = () =>{
+
     return(
         <div className="menuWrapper" id="menuIcon">
             <a href="#" className="push">About</a>
