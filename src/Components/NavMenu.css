@@ -8,7 +8,7 @@
     font-weight: var(--ff-wght-button);
     border-radius: 8px;
     overflow:hidden;
-    width: 88vw;
+    width: 88%;
     box-shadow: 2em 0 20em 5em hsla(0, 0%, 0%, 0.5);
 }
 

@@ -1,7 +1,7 @@
 .pledgeSection{
     box-sizing: border-box;
     width: 100%;
-    border: 1px solid var(--clr-dark-gray);
+    /* border: 1px solid var(--clr-dark-gray); */
     padding: 1em;
     border-radius: 8px;
     margin: 2em 0;
@@ -17,6 +17,14 @@
     margin-bottom: 2em;
 }
 
+.pledgeSection>input{
+    display: none;
+    float: left;
+    margin: 1em 1em 1em 0;
+    width: 2em;
+    height: 2em;
+}
+
 .PledgeValue{
     margin: 0;
     font-size: 2.5em;
@@ -30,14 +38,14 @@
     font-weight: var(--ff-wght-button);
 }
 
-.pledgeSection>h2{
+.pledgeSectionHeader>h2{
     font-weight: var(--ff-wght-heading);
     font-size: 1em;
     margin: 0;
     color: var(--clr-black);
 }
 
-.pledgeSection>h3{
+.pledgeSectionHeader>h3{
     font-weight: var(--ff-wght-button);
     margin: 0;
     color: var(--clr-primary-cyan);

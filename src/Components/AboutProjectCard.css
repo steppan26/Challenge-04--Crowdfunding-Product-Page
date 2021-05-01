@@ -12,3 +12,7 @@
     font-size: 1.2em;
     font-weight: var(--ff-wght-heading);
 }
+
+.aboutProject>.pledgeSection{
+    border: 1px solid var(--clr-dark-gray);
+}

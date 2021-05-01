@@ -3,10 +3,17 @@ import './PledgeSection.css';
 import Button from './Button';
 
 const PledgeSection = (props) => {
+    
+    if (!props.radio){
+
+    }
     return(
         <div className="pledgeSection">
-            <h2>{props.title}</h2>
-            <h3>{props.subtitle}</h3>
+            <input type="radio" name="pledgeOptionSelector" />
+            <div class="pledgeSectionHeader">
+                <h2>{props.title}</h2>
+                <h3>{props.subtitle}</h3>
+            </div>
             <p className="pledgeText">{props.text}</p>
             <div class="valueWrapper">
                 <h4 className="PledgeValue">{props.value}</h4>

@@ -4,20 +4,27 @@ import Navbar from './Containers/Navbar';
 import LandingCard from './Components/LandingCard.js';
 import DataInfoCard from './Components/DataInfoCard.js';
 import AboutProjectCard from './Components/AboutProjectCard.js';
+import Modal from './Containers/Modal.js';
 
 
 class App extends Component{
 
-  constructor(){
-      super()
+  constructor(props){
+      super(props)
       this.state = {
         dollarsBacked : 89914,
         totalBackers : 5007,
         daysLeft : 56,
         projectTargetValue : 100000,
-        modalIsOpen: false
+        modalIsOpen: true
       }
-      // this.handleDollars = this.handleDollars.bind(this);
+    }
+
+    handletoUpdate = () => {
+      console.log("clicked");
+      this.setState({
+        modalIsOpen: false
+      })
     }
 
     componentDidMount(){
@@ -35,7 +42,7 @@ class App extends Component{
           <LandingCard />
           <DataInfoCard {...this.state} />
           <AboutProjectCard />
-        
+          <Modal show={this.state.modalIsOpen} handleToUpdate={this.handletoUpdate} />
         </article>
       </div>
     )

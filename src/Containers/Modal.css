@@ -1,0 +1,39 @@
+.modalContainer{
+    position:absolute ;
+    width: 335px;
+    /* margin: auto 0 auto 0; */
+    top: 110px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    color: var(--clr-dark-gray);
+}
+
+.modalHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8em;
+    color: var(--clr-black);
+}
+
+.modalHeader>img{
+    width: 15px;
+    height: 15px;
+}
+
+.pledgeSection{
+    border: 1px solid var(--clr-dark-gray);
+}
+
+.modalBackground{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    border: none;
+    background-color: hsla(0, 0%, 0%, 0.411);
+    display: flex;
+    justify-content: center;
+}
