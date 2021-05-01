@@ -7,12 +7,13 @@ nav{
     align-items: center;
     justify-content:center;
     top: 0;
-    left: 0;
-    margin: 0;
-    padding: 0 6vw 0 6vw;
+    margin: 0 auto 0 auto;
+    padding: 0 1em;
     height: 10vh;
     width: 100%;
+    max-width: 375px;
     z-index: 999;
+    background:linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 50%, transparent)
 }
 
 nav>img{
