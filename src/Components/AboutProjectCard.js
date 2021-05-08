@@ -1,5 +1,5 @@
 import React from 'react';
-import PledgeSection from './PledgeSection.js';
+import PledgeSection from '../Containers/PledgeSection';
 import './AboutProjectCard.css';
 
 const AboutProjectCard = () => {
@@ -13,18 +13,24 @@ const AboutProjectCard = () => {
                 subtitle= "Pledge $25 or more"
                 text = "You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you'll be added to a special Backer member list."
                 value = "101"
+                radioDisplay = "none"
+                btnText = "Select Reward"
             />
             <PledgeSection className="pledgeSection"
                 title = "Black Edition Stand"
                 subtitle= "Pledge $75 or more"
                 text = "You get a Black Special Edition computer stand and a personal thank you. You'll be added to our Backer member list. Shipping is included."
                 value = "64"
+                radioDisplay = "none"
+                btnText = "Select Reward"
             />
             <PledgeSection className="pledgeSection"
                 title = "Mahogany Special Edition"
                 subtitle= "Pledge $200 or more"
                 text = "You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You'll be added to our Backer member list. Shipping is included."
                 value = "0"
+                radioDisplay = "none"
+                btnText = "Select Reward"
             />
         </div>
     );

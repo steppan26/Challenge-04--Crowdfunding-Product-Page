@@ -8,7 +8,8 @@ const Button = (props) =>{
             style={{
                 backgroundColor:`${props.bgColor}`,
                 color:`${props.textColor}`,
-                fontSize:`${props.fontSize}`
+                fontSize:`${props.fontSize}`,
+                display:`${props.display}`
                 }}
                 >
                 {props.children}

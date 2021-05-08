@@ -18,7 +18,7 @@
     --clr-primary-cyan: hsl(176, 50%, 47%);
     --clr-secondary-cyan: hsl(176, 72%, 28%);
     --clr-black: hsl(0, 0%, 0%);
-    --clr-dark-gray: hsla(0, 0%, 50%, 0.6);
+    --clr-dark-gray: hsla(0, 0%, 50%, 0.5);
 
     --ff-wght-text: 400;
     --ff-wght-button: 500;

@@ -1,0 +1,46 @@
+.lowerSection{
+    display: block;
+    padding: 0em 1.2em;
+}
+
+.lowerSection>p{
+    text-align: center;
+    color: var(--clr-dark-gray);
+    font-weight: var(--ff-wght-button);
+    font-size: 0.9em;
+}
+
+.inputs{
+    display: flex;
+    height: min-content;
+    align-items: center;
+}
+
+.pledgeInputBox{
+    cursor: pointer;
+    display: inline;
+    font-weight: var(--ff-wght-heading);
+    border-radius: 35px;
+    padding: 1.2em 2.2em;
+    background: none;
+    color: var(--clr-dark-gray);
+    letter-spacing: normal;
+    border: 0.1em solid rgba(102, 102, 102, 0.185);
+    height: 4em;
+    margin-right: 1em;
+    font-size: 0.75rem;
+}
+
+.pledgeInputBox>input{
+    width: 40px;
+    appearance: none;
+    border: none;
+    background: none;
+    font-weight: var(--ff-wght-heading);
+    font-size: 0.9rem;
+}
+
+.pledgeInputBox>input:focus{
+    outline: none;
+    border: none;
+}
