@@ -8,6 +8,7 @@
     padding: 1.4em;
     padding-bottom: 2.5em;
     height: fit-content;
+    z-index: 1;
 }
 
 .valueWrapper{
