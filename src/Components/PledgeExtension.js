@@ -6,9 +6,9 @@ const PledgeExtension = (props) =>{
     return(
         <div className="lowerSection" style={{display:props.ExtensionDisplay}}>
             <p>Enter your pledge</p>
-            <div class="inputs">
+            <div className="inputs">
                 <span className="pledgeInputBox">
-                    $ <input type="text" name="url" autofocus />
+                    $ <input type="text" name="url" autoFocus />
                 </span>
                 <Button className="btnPledge"
                     display ="inline"

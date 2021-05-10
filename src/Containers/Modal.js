@@ -6,17 +6,21 @@ import PledgeSection from '../Containers/PledgeSection';
 class Modal extends Component {
     constructor(){
         super()
-        this.state={pledgeSectionArray: {}}
+        this.state={
+            AboutPledgeSection: {},
+            ModalPledgeSection:{}
+        }
     }
 
     componentDidMount(){
         //Create an array of all pledgeSections after load in order to loop through them later
-        this.setState({pledgeSectionArray: Array.from(document.getElementsByClassName("pledgeSection"))})
+        this.setState({AboutPledgeSection: document.getElementById("modal").getElementsByClassName("pledgeSection")})
+        this.setState({ModalPledgeSection: document.getElementById("modal").getElementsByClassName("pledgeSection")})
     }
 
     updatePledgeExtension = (e) =>{
         //set pledgeExtension and <hr> to hide so only one may be viewable at a time
-        this.state.pledgeSectionArray.forEach((x)=>{
+        this.state.ModalPledgeSection.forEach((x)=>{
             x.children[5].style.display = "none"
             x.children[4].style.display = "none"
             x.classList.remove("pledgeSectionSelected");

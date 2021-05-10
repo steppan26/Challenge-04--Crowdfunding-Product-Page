@@ -5,13 +5,16 @@ import RadioButton from '../Components/RadioButton';
 import PledgeExtension from '../Components/PledgeExtension.js';
 
 const PledgeSection = (props) => {
-    const setValue = () =>{
-        if(props.valueSize === 0){
-            return "";
-        } else {
-            return "$ " + props.value;
-        }
+    let pledgeValue = "";
+    let leftText = " left"
+    if(props.valueSize <= 0){
+        pledgeValue = "";
+        leftText = "";
+    } else {
+        pledgeValue = props.value;
+        leftText = " left"
     }
+
         return(
             <div className="pledgeSection">
                 <div className="pledgeSectionHeader">
@@ -25,8 +28,8 @@ const PledgeSection = (props) => {
                 </div>
                 <p className="pledgeText">{props.text}</p>
                 <div className="valueWrapper">
-                    <h4 className="PledgeValue" style={{fontSize:props.valueSize}}>{setValue}</h4>
-                    <h5> left</h5>
+                    <h4 className="PledgeValue" style={{fontSize:props.valueSize}}>{pledgeValue}</h4>
+                    <h5> {leftText}</h5>
                 </div>
                 <Button className="btnPledge"
                     display ={props.btnDisplay}

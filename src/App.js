@@ -9,8 +9,8 @@ import Modal from './Containers/Modal.js';
 
 class App extends Component{
 
-  constructor(props){
-      super(props)
+  constructor(){
+      super()
       this.state = {
         dollarsBacked : 89914,
         totalBackers : 5007,
