@@ -1,6 +1,7 @@
 .lowerSection{
-    display: block;
-    padding: 0em 1.2em;
+    display: none;
+    padding: 0.2em 1.2em 1em 1.2em;
+    height: min-content;
 }
 
 .lowerSection>p{
@@ -14,11 +15,12 @@
     display: flex;
     height: min-content;
     align-items: center;
+    margin: 0;
 }
 
 .pledgeInputBox{
     cursor: pointer;
-    display: inline;
+    display: flex;
     font-weight: var(--ff-wght-heading);
     border-radius: 35px;
     padding: 1.2em 2.2em;
@@ -38,6 +40,7 @@
     background: none;
     font-weight: var(--ff-wght-heading);
     font-size: 0.9rem;
+    padding-left: 0.5em;
 }
 
 .pledgeInputBox>input:focus{

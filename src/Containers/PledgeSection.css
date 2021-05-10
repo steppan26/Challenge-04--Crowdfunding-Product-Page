@@ -1,13 +1,18 @@
 .pledgeSection{
-    box-sizing: border-box;
     width: 100%;
-    padding: 1em;
     border-radius: 8px;
     margin: 4em 0 0 0;
-    padding: 1.4em;
-    padding-bottom: 2.5em;
-    height: fit-content;
+    padding: 1.5em 1.4em;
+    height:min-content;
     z-index: 1;
+}
+
+.pledgeSectionSelected{
+    box-sizing: border-box;
+    padding-left: 1.3em;
+    padding-right: 1.3em;
+    padding-bottom: 1em;
+    border: 2px solid var(--clr-primary-cyan) !important;
 }
 
 .pledgeSectionHeader{
@@ -76,11 +81,13 @@
 }
 
 .pledgeDivider{
+    display: none;
     position: absolute;
-    left: 1.5em;
+    left: 1.6em;
     width: 85%;
     height: 1px;
-    color: hsla(0, 0%, 34%, 0.3);
+    color: hsla(0, 0%, 77%, 0.3);
     margin: 0;
     padding: 0;
 }
+

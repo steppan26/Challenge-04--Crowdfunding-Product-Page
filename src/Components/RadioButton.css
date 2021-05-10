@@ -14,9 +14,12 @@
 
 .radio>input {
     display: flex;
+    position: relative;
+    align-self: center;
     appearance: none;
     width: 0;
     height: 0;
+    top: 0;
 }
 
 .radio_control{

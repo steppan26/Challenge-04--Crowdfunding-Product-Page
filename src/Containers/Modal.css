@@ -1,7 +1,6 @@
 .modalContainer{
     position:absolute ;
     width: 335px;
-    /* margin: auto 0 auto 0; */
     top: 110px;
     background-color: white;
     display: flex;
@@ -21,9 +20,15 @@
 .modalHeader>img{
     width: 15px;
     height: 15px;
+    transition: transform .3s ease-in-out;
+}
+
+.modalHeader>img:hover{
+    transform: rotate(90deg);
 }
 
 .pledgeSection{
+    box-sizing: border-box;
     border: 1px solid var(--clr-dark-gray);
 }
 

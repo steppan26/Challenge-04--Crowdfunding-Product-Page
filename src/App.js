@@ -16,23 +16,40 @@ class App extends Component{
         totalBackers : 5007,
         daysLeft : 56,
         projectTargetValue : 100000,
-        modalIsOpen: true
+        modalIsOpen: false
       }
     }
 
-    handletoUpdate = () => {
-      console.log("clicked");
-      this.setState({
-        modalIsOpen: false
-      })
-    }
+  componentDidMount(){
+    //convert values from state into $dollar value
+    const progressBar = document.getElementById("progressBar");
+    let dollarsBackedValue = Number(this.state.dollarsBacked);
+    let progressBarPercent = (100*(dollarsBackedValue / this.state.projectTargetValue)) + "%";
+    progressBar.style.width = progressBarPercent;
 
-    componentDidMount(){
-      const progressBar = document.getElementById("progressBar");
-      let dollarsBackedValue = Number(this.state.dollarsBacked);
-      let progressBarPercent = (100*(dollarsBackedValue / this.state.projectTargetValue)) + "%";
-      progressBar.style.width = progressBarPercent;
-    }
+    // add eventlistener to buttons on the About Project page
+    const aboutProjectElements = Array.from(document.getElementById("aboutProject").children);
+    aboutProjectElements.forEach((x, i) => {
+      if (i >=3){
+        x.children[3].addEventListener("click", (x) => {
+          window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+          });
+          document.getElementById("modal").style.display = "block"
+          this.setState({modalIsOpen: true})
+        })
+      }
+    });
+  }
+
+  closeModal = () => {
+    document.getElementById("modal").style.display = "none";
+    this.setState({
+      modalIsOpen: false
+    })
+  }
 
   render(){
     return(
@@ -42,7 +59,7 @@ class App extends Component{
           <LandingCard />
           <DataInfoCard {...this.state} />
           <AboutProjectCard />
-          <Modal show={this.state.modalIsOpen} handleToUpdate={this.handletoUpdate} />
+          <Modal show={this.state.modalIsOpen} handleToUpdate={this.closeModal} />
         </article>
       </div>
     )

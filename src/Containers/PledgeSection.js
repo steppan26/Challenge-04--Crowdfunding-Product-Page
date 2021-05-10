@@ -1,63 +1,47 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './PledgeSection.css';
 import Button from '../Components/Button';
 import RadioButton from '../Components/RadioButton';
 import PledgeExtension from '../Components/PledgeExtension.js';
 
-class PledgeSection extends Component {
-    constructor(){
-        super()
-        this.state = {
-            isSelected: false,
-            display: "none"
-        };
-    }
-
-    render(){
-        let extensionDisplay = "none"
-        const handleRadioOnChange = () =>{
-            const pledgeExtensionElements = Array.from(document.getElementsByClassName("lowerSection"));
-            pledgeExtensionElements.forEach((x)=>{
-                extensionDisplay = "none"
-            })
-            if(!this.state.isSelected){
-                extensionDisplay = "block"
-            } else {
-                extensionDisplay = "none"
-            }
+const PledgeSection = (props) => {
+    const setValue = () =>{
+        if(props.valueSize === 0){
+            return "";
+        } else {
+            return "$ " + props.value;
         }
-
+    }
         return(
             <div className="pledgeSection">
                 <div className="pledgeSectionHeader">
                     <RadioButton
                         name="pledgeRadio"
-                        display={this.props.radioDisplay}
-                        onChange={handleRadioOnChange}
+                        display={props.radioDisplay}
+                        onChange={props.onChange}
                         />
-                    <h2>{this.props.title}</h2>
-                    <h3>{this.props.subtitle}</h3>
+                    <h2>{props.title}</h2>
+                    <h3>{props.subtitle}</h3>
                 </div>
-                <p className="pledgeText">{this.props.text}</p>
+                <p className="pledgeText">{props.text}</p>
                 <div className="valueWrapper">
-                    <h4 className="PledgeValue" style={{fontSize:this.props.valueSize}}>{this.props.value}</h4>
+                    <h4 className="PledgeValue" style={{fontSize:props.valueSize}}>{setValue}</h4>
                     <h5> left</h5>
                 </div>
                 <Button className="btnPledge"
-                    display ={this.props.btnDisplay}
+                    display ={props.btnDisplay}
                     bgColor='var(--clr-primary-cyan)'
                     textColor='white'
                     fontSize = '1em'
                     >
-                    {this.props.btnText}
+                    {props.btnText}
                 </Button>
                 <hr className="pledgeDivider"/>
                 <PledgeExtension
-                    ExtensionDisplay = {extensionDisplay}
+                    ExtensionDisplay = {props.extensionDisplay}
                 />
             </div>
         );
-    }
 }
 
 export default PledgeSection;
