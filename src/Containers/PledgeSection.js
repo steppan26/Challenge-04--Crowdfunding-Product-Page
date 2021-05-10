@@ -7,6 +7,7 @@ import PledgeExtension from '../Components/PledgeExtension.js';
 const PledgeSection = (props) => {
     let pledgeValue = "";
     let leftText = " left"
+
     if(props.valueSize <= 0){
         pledgeValue = "";
         leftText = "";
@@ -14,7 +15,7 @@ const PledgeSection = (props) => {
         pledgeValue = props.value;
         leftText = " left"
     }
-
+    
         return(
             <div className="pledgeSection">
                 <div className="pledgeSectionHeader">
@@ -36,8 +37,8 @@ const PledgeSection = (props) => {
                     bgColor='var(--clr-primary-cyan)'
                     textColor='white'
                     fontSize = '1em'
-                    >
-                    {props.btnText}
+                    linkId={props.linkId}
+                    >{props.btnText}
                 </Button>
                 <hr className="pledgeDivider"/>
                 <PledgeExtension

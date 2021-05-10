@@ -15,6 +15,7 @@ const LandingCard = () => {
                     bgColor='var(--clr-primary-cyan)'
                     textColor='white'
                     fontSize='1em'
+                    linkId = "1"
                     >
                     Back this project
                 </Button>

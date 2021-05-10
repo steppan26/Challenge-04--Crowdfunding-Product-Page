@@ -15,6 +15,7 @@ const AboutProjectCard = () => {
                 value = "101"
                 radioDisplay = "none"
                 btnText = "Select Reward"
+                linkId = "2"
             />
             <PledgeSection className="pledgeSection"
                 title = "Black Edition Stand"
@@ -23,6 +24,7 @@ const AboutProjectCard = () => {
                 value = "64"
                 radioDisplay = "none"
                 btnText = "Select Reward"
+                linkId = "3"
             />
             <PledgeSection className="pledgeSection"
                 title = "Mahogany Special Edition"
@@ -31,6 +33,7 @@ const AboutProjectCard = () => {
                 value = "0"
                 radioDisplay = "none"
                 btnText = "Select Reward"
+                linkId = "4"
             />
         </div>
     );

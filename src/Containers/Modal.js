@@ -8,14 +8,14 @@ class Modal extends Component {
         super()
         this.state={
             AboutPledgeSection: {},
-            ModalPledgeSection:{}
+            ModalPledgeSection:[]
         }
     }
 
     componentDidMount(){
-        //Create an array of all pledgeSections after load in order to loop through them later
+        //Create an array of all pledgeSections and set to state after load in order to loop through them later
         this.setState({AboutPledgeSection: document.getElementById("modal").getElementsByClassName("pledgeSection")})
-        this.setState({ModalPledgeSection: document.getElementById("modal").getElementsByClassName("pledgeSection")})
+        this.setState({ModalPledgeSection: this.state.ModalPledgeSection.concat(Array.from(document.getElementById("modal").getElementsByClassName("pledgeSection")))})
     }
 
     updatePledgeExtension = (e) =>{
@@ -24,13 +24,17 @@ class Modal extends Component {
             x.children[5].style.display = "none"
             x.children[4].style.display = "none"
             x.classList.remove("pledgeSectionSelected");
-            console.log(e)
         })
         if (e.target.checked){
             e.target.parentElement.parentElement.parentElement.children[5].style.display = "block"
             e.target.parentElement.parentElement.parentElement.children[4].style.display = "block"
             e.target.parentElement.parentElement.parentElement.classList.add("pledgeSectionSelected")
-            // console.log(e.target.parentElement.parentElement.parentElement.children)
+            const elementPosition = e.target.parentElement.offsetTop - 150
+            window.scrollTo({
+                top: `${elementPosition}`,
+                left: 0,
+                behavior: 'smooth'
+              });
         }
     }
 
