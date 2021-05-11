@@ -3,7 +3,7 @@
     width: 335px;
     top: 110px;
     background-color: white;
-    display: flex;
+    display: none;
     flex-direction: column;
     color: var(--clr-dark-gray);
     z-index: 10;

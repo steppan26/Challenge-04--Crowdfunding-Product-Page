@@ -17,9 +17,9 @@ class App extends Component{
         totalBackers : 5007,
         daysLeft : 56,
         projectTargetValue : 100000,
-        modalIsOpen: true,
+        modalIsOpen: false,
         linkedBtnsArray: [],
-        pledgeValues: [0,25,75,200]
+        pledgeValues: [0,25,75,200],
       }
     }
 
@@ -33,6 +33,8 @@ class App extends Component{
     // add eventlistener to buttons on the About Project page
     this.createStateLinkBtnsArrayAndEventListener()
     this.createPledgeSubmitBtns()
+    const closePledgeConfirmationBtn = document.getElementsByClassName("btnPledgeConfirmed")[0]
+    closePledgeConfirmationBtn.addEventListener("click", ()=>{document.getElementById("pledgeConfirmation").style.display = "none"})
   }
 
   createStateLinkBtnsArrayAndEventListener(){
@@ -130,10 +132,22 @@ class App extends Component{
     if(!parseInt(inputValue)){
       console.log("Please input a whole number greater than "+ minimumPledge)
     } else if (inputValue >= minimumPledge){
-      console.log("You have pledged $"+inputValue)
+      this.sumbitPledge(inputValue)
     } else {
       console.log("You must pledge at least $"+minimumPledge)
     }
+  }
+
+  sumbitPledge(pledgeValue){
+    document.getElementById("pledgeConfirmation").style.display = "flex"
+    this.closeModal()
+    //add the pledged amount to the total dollars backed and update state
+    let newTotal = this.state.dollarsBacked + pledgeValue;
+    this.setState({dollarsBacked: newTotal})
+    //increase number of backers in state by 1
+    let newBackersTotal = this.state.totalBackers + 1
+    this.setState({totalBackers: newBackersTotal})
+
   }
 
   getPledgeValuesArray(){
@@ -180,7 +194,7 @@ class App extends Component{
   }
 
   scrollToElement(radioElement){
-    const elementPosition = radioElement.parentElement.offsetTop - 200;//align the element to the middle of the viewport
+    const elementPosition = radioElement.parentElement.offsetTop - 75;//align the element to the middle of the viewport
     window.scrollTo({
         top: `${elementPosition}`,
         left: 0,

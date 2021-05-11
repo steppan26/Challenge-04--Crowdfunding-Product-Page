@@ -2,10 +2,10 @@ import React from 'react';
 import './Button.css';
 
 const Button = (props) =>{
-    let buttonClassName = "btn"
+    let buttonClassName = " btn " + props.className
     if (parseInt(props.linkId)){
         const linkIdString = String(props.linkId)
-        buttonClassName = "btn linkID" + linkIdString
+        buttonClassName = " btn linkID" + linkIdString +" "+ props.className
     }
 
     return(
