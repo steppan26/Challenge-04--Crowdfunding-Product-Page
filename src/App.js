@@ -33,18 +33,19 @@ class App extends Component{
     aboutProjectElements.forEach((x, i) => {
       if (i >=3){
         x.children[3].addEventListener("click", (e) => {
-          // const linkID 
-          //get link id by running array of classNames with linkID
-          //and taking the last part (the number) and using it as the index value
-          //for the state array
-          let linkId = this.getLinkId(e);
-          const modalPledgeSectionSelected = document.getElementById("modal").getElementsByClassName("pledgeSection")[linkId];
-          modalPledgeSectionSelected.children[0].children[0].children[0].checked = true;
-          this.openModal();
+          this.buttonClicked(e)
         })
       }
     });
     this.createStateBtnArray()
+  }
+
+  buttonClicked(e){
+    let linkId = this.getLinkId(e);
+    const modalPledgeSectionSelected = document.getElementById("modal").getElementsByClassName("pledgeSection")[linkId];
+    modalPledgeSectionSelected.children[0].children[0].children[0].checked = true;
+    this.openModal();
+    console.log(this.state.btnLinkID)
   }
 
   createStateBtnArray(){
