@@ -20,6 +20,7 @@ class App extends Component{
         modalIsOpen: false,
         linkedBtnsArray: [],
         pledgeValues: [0,25,75,200],
+        pledgesRemaining: [101,64,0]
       }
     }
 
@@ -34,7 +35,11 @@ class App extends Component{
     this.createStateLinkBtnsArrayAndEventListener()
     this.createPledgeSubmitBtns()
     const closePledgeConfirmationBtn = document.getElementsByClassName("btnPledgeConfirmed")[0]
-    closePledgeConfirmationBtn.addEventListener("click", ()=>{document.getElementById("pledgeConfirmation").style.display = "none"})
+    closePledgeConfirmationBtn.addEventListener("click", ()=>{
+      document.getElementById("pledgeConfirmation").style.display = "none"
+      console.log(this.state.pledgesRemaining)
+      return;
+    })
   }
 
   createStateLinkBtnsArrayAndEventListener(){
@@ -118,6 +123,7 @@ class App extends Component{
   }
 
   btnEventListner(e, pledgeValues){
+    //create inputBox array for easy selection
     const inputValue = e.target.parentElement.getElementsByClassName("pledgeInputBox")[0].children[0].value;
     //get active pledge section position in pledgeSection array then once found add its index
     //to pledgeSectionIndex
@@ -128,26 +134,35 @@ class App extends Component{
         pledgeSectionIndex = index
       }
     })
+
     const minimumPledge = pledgeValues[pledgeSectionIndex];
     if(!parseInt(inputValue)){
-      console.log("Please input a whole number greater than "+ minimumPledge)
+      alert("Please input a whole number greater than "+ minimumPledge)
     } else if (inputValue >= minimumPledge){
       this.sumbitPledge(inputValue)
+      //reduce number of pledges remaining, for corresponding state, by 1
+      let myArray = this.state.pledgesRemaining
+      const pledgeIndex = pledgeSectionIndex-1;
+      let newValue = myArray[pledgeIndex] - 1;
+      myArray[pledgeIndex] = newValue;
+
+      this.setState({pledgesRemaining: myArray})
     } else {
-      console.log("You must pledge at least $"+minimumPledge)
+      alert("You must pledge at least $"+minimumPledge)
     }
   }
 
   sumbitPledge(pledgeValue){
-    document.getElementById("pledgeConfirmation").style.display = "flex"
-    this.closeModal()
+    document.getElementById("pledgeConfirmation").style.display = "flex" //Display the modal thanking the user for their pledge
+    this.closeModal() //close the modal which displays the different pledge options
+
     //add the pledged amount to the total dollars backed and update state
-    let newTotal = this.state.dollarsBacked + pledgeValue;
+    let newTotal = this.state.dollarsBacked + parseInt(pledgeValue);
     this.setState({dollarsBacked: newTotal})
+
     //increase number of backers in state by 1
     let newBackersTotal = this.state.totalBackers + 1
     this.setState({totalBackers: newBackersTotal})
-
   }
 
   getPledgeValuesArray(){
@@ -208,14 +223,16 @@ class App extends Component{
       this.sectionSelected(radioEvent.target)
     }
 
+    let pledgesRemaining = this.state.pledgesRemaining;
+
     return(
       <div id="App" className="defaultTheme mobile">
         <Navbar />
         <article className="articleWrapper">
           <LandingCard />
           <DataInfoCard {...this.state} />
-          <AboutProjectCard pledgeValues={this.state.pledgeValues}/>
-          <Modal show={this.state.modalIsOpen} handleToUpdate={this.closeModal} activeSection={updatePledgeExtension} pledgeValues={this.state.pledgeValues}/>
+          <AboutProjectCard pledgeValues={this.state.pledgeValues} pledgesRemaining={pledgesRemaining}/>
+          <Modal show={this.state.modalIsOpen} handleToUpdate={this.closeModal} activeSection={updatePledgeExtension} pledgeValues={this.state.pledgeValues} pledgesRemaining={pledgesRemaining}/>
           <PledgeReceived />
         </article>
       </div>

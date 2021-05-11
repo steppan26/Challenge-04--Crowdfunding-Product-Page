@@ -29,7 +29,7 @@ const Modal = (props) => {
                     title = "Bamboo Stand"
                     pledgeValue=  {props.pledgeValues[1]}
                     text = "You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you'll be added to a special Backer member list."
-                    backersValue = "101"
+                    backersValue = {props.pledgesRemaining[0]}
                     backersValueSize = "1.5em"
                     btnDisplay = "none"
                     radioDisplay = "inline"
@@ -40,7 +40,7 @@ const Modal = (props) => {
                     title = "Black Edition Stand"
                     pledgeValue=  {props.pledgeValues[2]}
                     text = "You get a Black Special Edition computer stand and a personal thank you. You'll be added to our Backer member list. Shipping is included."
-                    backersValue = "64"
+                    backersValue = {props.pledgesRemaining[1]}
                     backersValueSize = "1.5em"
                     btnDisplay = "none"
                     radioDisplay = "inline"
@@ -52,7 +52,7 @@ const Modal = (props) => {
                     title = "Mahogany Special Edition"
                     pledgeValue=  {props.pledgeValues[3]}
                     text = "You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You'll be added to our Backer member list. Shipping is included."
-                    backersValue = "0"
+                    backersValue = {props.pledgesRemaining[2]}
                     backersValueSize = "1.5em"
                     btnDisplay = "none"
                     radioDisplay = "inline"

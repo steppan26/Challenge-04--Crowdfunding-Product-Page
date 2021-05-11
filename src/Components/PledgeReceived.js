@@ -3,7 +3,7 @@ import Button from './Button'
 import './PledgeReceived.css'
 import Icon from '../images/icon-check.svg'
 
-const PledgeReceived = (props) =>{
+const PledgeReceived = () =>{
     return(
         <div className="cardWrapper" id="pledgeConfirmation">
             <hr className="modalBackground" />
