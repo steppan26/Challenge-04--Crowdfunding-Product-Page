@@ -2,7 +2,7 @@ import React from 'react';
 import PledgeSection from '../Containers/PledgeSection';
 import './AboutProjectCard.css';
 
-const AboutProjectCard = () => {
+const AboutProjectCard = (props) => {
     return(
         <div className="card aboutProject" id="aboutProject">
             <h1>About this project</h1>
@@ -10,27 +10,27 @@ const AboutProjectCard = () => {
             <p>Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer to allow notepads, pens, and USB sticks to be stored under the stand.</p>
             <PledgeSection className="pledgeSection"
                 title = "Bamboo Stand"
-                subtitle= "Pledge $25 or more"
+                pledgeValue= {props.pledgeValues[1]}
                 text = "You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you'll be added to a special Backer member list."
-                value = "101"
+                backersValue = "101"
                 radioDisplay = "none"
                 btnText = "Select Reward"
                 linkId = "2"
             />
             <PledgeSection className="pledgeSection"
                 title = "Black Edition Stand"
-                subtitle= "Pledge $75 or more"
+                pledgeValue= {props.pledgeValues[2]}
                 text = "You get a Black Special Edition computer stand and a personal thank you. You'll be added to our Backer member list. Shipping is included."
-                value = "64"
+                backersValue = "64"
                 radioDisplay = "none"
                 btnText = "Select Reward"
                 linkId = "3"
             />
             <PledgeSection className="pledgeSection"
                 title = "Mahogany Special Edition"
-                subtitle= "Pledge $200 or more"
+                pledgeValue= {props.pledgeValues[3]}
                 text = "You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You'll be added to our Backer member list. Shipping is included."
-                value = "0"
+                backersValue = "0"
                 radioDisplay = "none"
                 btnText = "Select Reward"
                 linkId = "4"

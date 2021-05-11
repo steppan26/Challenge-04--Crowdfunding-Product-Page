@@ -1,0 +1,22 @@
+.modalPledgeReceived{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position:fixed;
+    top: 30%;
+    z-index: 99;
+    width: 21em;
+    color: var(--clr-dark-gray);
+    font-weight: var(--ff-wght-button);
+}
+
+.modalPledgeReceived>img{
+    width: 5em;
+}
+
+.modalPledgeReceived>h2{
+    color: var(--clr-black);
+    font-weight: var(--ff-wght-heading);
+
+}

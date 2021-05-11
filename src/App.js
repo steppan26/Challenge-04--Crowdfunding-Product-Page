@@ -5,6 +5,7 @@ import LandingCard from './Components/LandingCard.js';
 import DataInfoCard from './Components/DataInfoCard.js';
 import AboutProjectCard from './Components/AboutProjectCard.js';
 import Modal from './Containers/Modal.js';
+import PledgeReceived from './Components/PledgeReceived'
 
 
 class App extends Component{
@@ -17,7 +18,8 @@ class App extends Component{
         daysLeft : 56,
         projectTargetValue : 100000,
         modalIsOpen: true,
-        linkedBtnsArray: []
+        linkedBtnsArray: [],
+        pledgeValues: [0,25,75,200]
       }
     }
 
@@ -30,10 +32,29 @@ class App extends Component{
 
     // add eventlistener to buttons on the About Project page
     this.createStateLinkBtnsArrayAndEventListener()
+    this.createPledgeSubmitBtns()
   }
 
   createStateLinkBtnsArrayAndEventListener(){
     const btnsArray = Array.from(document.getElementsByClassName("btn"))
+    let linkedBtns = [];
+
+    btnsArray.forEach((btn) =>{
+      for(let i = 1; i < btnsArray.length + 1; i++){
+        if(btn.classList.contains("linkID"+i)){
+          btn.addEventListener("click", (e) => {
+            this.buttonClicked(e)
+          })
+          linkedBtns.push(btn)
+
+        }
+      }
+    })
+    this.setState({linkedBtnsArray: linkedBtns})
+  }
+
+  createPledgeSubmitBtns(){
+    const btnsArray = Array.from(document.getElementById("modal").getElementsByClassName("btn"))
     let linkedBtns = [];
 
     btnsArray.forEach((btn) =>{
@@ -80,6 +101,43 @@ class App extends Component{
     selectedPledgeSection.children[4].style.display = "block" //display the <hr> element
     selectedPledgeSection.children[5].style.display = "block" //display the "lower section" element
     selectedPledgeSection.classList.add("pledgeSectionSelected") // add className with different CSS styles to show highlighted section
+    this.activateInputs(selectedPledgeSection)
+  }
+
+  activateInputs(selectedPledgeSection){
+    const allModalPledgeSections = Array.from(document.getElementById("modal").getElementsByClassName("pledgeSection"))
+    allModalPledgeSections.forEach((x) => {
+      const btn = x.getElementsByClassName("btn")[1]
+      btn.removeEventListener("click", this.btnEventListner)
+    })
+    selectedPledgeSection.getElementsByClassName("btn")[1].addEventListener("click", (e) =>{
+      this.btnEventListner(e, this.getPledgeValuesArray())
+    })
+  }
+
+  btnEventListner(e, pledgeValues){
+    const inputValue = e.target.parentElement.getElementsByClassName("pledgeInputBox")[0].children[0].value;
+    //get active pledge section position in pledgeSection array then once found add its index
+    //to pledgeSectionIndex
+    let pledgeSectionIndex = 0
+    const pledgeSectionArray = Array.from(document.getElementById("modal").getElementsByClassName("pledgeSection"))
+    pledgeSectionArray.forEach((pledgeSection, index) =>{
+      if(pledgeSection.classList.contains("pledgeSectionSelected")){
+        pledgeSectionIndex = index
+      }
+    })
+    const minimumPledge = pledgeValues[pledgeSectionIndex];
+    if(!parseInt(inputValue)){
+      console.log("Please input a whole number greater than "+ minimumPledge)
+    } else if (inputValue >= minimumPledge){
+      console.log("You have pledged $"+inputValue)
+    } else {
+      console.log("You must pledge at least $"+minimumPledge)
+    }
+  }
+
+  getPledgeValuesArray(){
+    return this.state.pledgeValues;
   }
 
   getLinkId(event){
@@ -142,8 +200,9 @@ class App extends Component{
         <article className="articleWrapper">
           <LandingCard />
           <DataInfoCard {...this.state} />
-          <AboutProjectCard />
-          <Modal show={this.state.modalIsOpen} handleToUpdate={this.closeModal} activeSection={updatePledgeExtension}/>
+          <AboutProjectCard pledgeValues={this.state.pledgeValues}/>
+          <Modal show={this.state.modalIsOpen} handleToUpdate={this.closeModal} activeSection={updatePledgeExtension} pledgeValues={this.state.pledgeValues}/>
+          <PledgeReceived />
         </article>
       </div>
     )

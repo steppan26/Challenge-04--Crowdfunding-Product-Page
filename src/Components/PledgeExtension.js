@@ -15,6 +15,7 @@ const PledgeExtension = (props) =>{
                     bgColor='var(--clr-primary-cyan)'
                     textColor='white'
                     fontSize = '0.85em'
+                    linkID = "0"
                 >Continue
                 </Button>
             </div>
