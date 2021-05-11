@@ -17,7 +17,7 @@ class App extends Component{
         daysLeft : 56,
         projectTargetValue : 100000,
         modalIsOpen: true,
-        btnLinkID: []
+        linkedBtnsArray: []
       }
     }
 
@@ -29,63 +29,81 @@ class App extends Component{
     progressBar.style.width = progressBarPercent;
 
     // add eventlistener to buttons on the About Project page
-    const aboutProjectElements = Array.from(document.getElementById("aboutProject").children);
-    aboutProjectElements.forEach((x, i) => {
-      if (i >=3){
-        x.children[3].addEventListener("click", (e) => {
-          this.buttonClicked(e)
-        })
-      }
-    });
-    this.createStateBtnArray()
+    this.createStateLinkBtnsArrayAndEventListener()
   }
+
+  createStateLinkBtnsArrayAndEventListener(){
+    const btnsArray = Array.from(document.getElementsByClassName("btn"))
+    let linkedBtns = [];
+
+    btnsArray.forEach((btn) =>{
+      for(let i = 1; i < btnsArray.length + 1; i++){
+        if(btn.classList.contains("linkID"+i)){
+          btn.addEventListener("click", (e) => {
+            this.buttonClicked(e)
+          })
+          linkedBtns.push(btn)
+
+        }
+      }
+    })
+    this.setState({linkedBtnsArray: linkedBtns})
+  }
+
 
   buttonClicked(e){
     let linkId = this.getLinkId(e);
-    const modalPledgeSectionSelected = document.getElementById("modal").getElementsByClassName("pledgeSection")[linkId];
-    modalPledgeSectionSelected.children[0].children[0].children[0].checked = true;
+    const modalPledgeSectionSelectedRadio = document.getElementById("modal").getElementsByClassName("pledgeSection")[linkId-1].children[0].children[0].children[0];
+    modalPledgeSectionSelectedRadio.checked = true;
     this.openModal();
-    console.log(this.state.btnLinkID)
+    this.sectionSelected(modalPledgeSectionSelectedRadio)
   }
 
-  createStateBtnArray(){
-    //Loop through each button to check if they containt a className "linkiD"
-    // followed by a number, up to the length of the total number of buttons
-    const buttonsList = Array.from(document.getElementsByClassName("btn"))
-    const buttonsListLength = document.getElementsByClassName("btn").length
+  sectionSelected(radioElement){
+    this.hideAllExtensions();
+    this.showSelectedExtensionSection(radioElement);
+    this.scrollToElement(radioElement)
+  }
 
-    let buttonsStateArray = []
-    buttonsList.forEach((button) =>{
+  hideAllExtensions(){
+    //Hide all pledgeExtensions and <hr> sibling
+    const pledgeSectionArray = Array.from(document.getElementById("modal").getElementsByClassName("pledgeSection"));
+    pledgeSectionArray.forEach((x)=>{
+        x.children[5].style.display = "none"
+        x.children[4].style.display = "none"
+        x.classList.remove("pledgeSectionSelected");
+    })
+  }
 
-      for(let i = 0; i < buttonsListLength + 1; i++){
-        if(button.classList.contains("linkID"+String((i+1)))){
-          console.log("linkID"+String((i+1)))
-          buttonsStateArray[i] = false;
-        }
-      }
-    });
-    this.setState({btnLinkID: buttonsStateArray}) //creates the state array for btnLinksID using above function
+  showSelectedExtensionSection(radioElement){
+    const selectedPledgeSection = radioElement.parentElement.parentElement.parentElement;
+    selectedPledgeSection.children[4].style.display = "block" //display the <hr> element
+    selectedPledgeSection.children[5].style.display = "block" //display the "lower section" element
+    selectedPledgeSection.classList.add("pledgeSectionSelected") // add className with different CSS styles to show highlighted section
   }
 
   getLinkId(event){
+    //Loop through each button to check if they containt a className "linkiD"
+    // followed by a number, up to the length of the total number of buttons
+    //then record the number of instances in btnsAmount
+    const buttonsList = Array.from(document.getElementsByClassName("btn"))
     let linkID = 0;
 
-    for(let i = 1; i < this.state.btnLinkID.length + 1; i++){
-      if(event.target.classList.contains("linkID"+i)){
-      linkID = i-1;
+    let btnsAmount = 0
+    buttonsList.forEach((button) =>{
+      for(let i = 0; i < buttonsList.length + 1; i++){
+        if(button.classList.contains("linkID"+String((i+1)))){
+          btnsAmount++
+        }
       }
-      }
-    return linkID;
-  }
+    });
 
-  scrollToElement(element){
-    const elementPosition = element.children[0];
-    console.log(elementPosition)
-    window.scrollTo({
-      top: `${elementPosition}`,
-      left: 0,
-      behavior: 'smooth'
-    })
+    for(let i = 1; i < btnsAmount + 1; i++){
+      if(event.target.classList.contains("linkID"+i)){
+        linkID = i;
+      }
+    }
+    return linkID;
   }
 
   openModal = () => {
@@ -103,7 +121,21 @@ class App extends Component{
     })
   }
 
+  scrollToElement(radioElement){
+    const elementPosition = radioElement.parentElement.offsetTop - 200;//align the element to the middle of the viewport
+    window.scrollTo({
+        top: `${elementPosition}`,
+        left: 0,
+        behavior: 'smooth'
+      });
+  }
+
   render(){
+
+    const updatePledgeExtension = (radioEvent) =>{
+      this.sectionSelected(radioEvent.target)
+    }
+
     return(
       <div id="App" className="defaultTheme mobile">
         <Navbar />
@@ -111,7 +143,7 @@ class App extends Component{
           <LandingCard />
           <DataInfoCard {...this.state} />
           <AboutProjectCard />
-          <Modal show={this.state.modalIsOpen} handleToUpdate={this.closeModal} activeSection={this.state.btnLinkID}/>
+          <Modal show={this.state.modalIsOpen} handleToUpdate={this.closeModal} activeSection={updatePledgeExtension}/>
         </article>
       </div>
     )

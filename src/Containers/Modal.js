@@ -5,42 +5,6 @@ import PledgeSection from '../Containers/PledgeSection';
 
 const Modal = (props) => {
 
-    const sectionSelected = (radioElement) =>{
-        hideAllExtensions()
-        showSelectedExtensionSection(radioElement)
-    }
-
-    const updatePledgeExtension = (e) =>{
-        hideAllExtensions()
-        showSelectedExtensionSection(e.target)
-    }
-
-    const hideAllExtensions = () =>{
-        //set pledgeExtension and <hr> to hide so only one may be viewable at a time
-        const pledgeSectionArray = Array.from(document.getElementById("modal").getElementsByClassName("pledgeSection"));
-        pledgeSectionArray.forEach((x)=>{
-            x.children[5].style.display = "none"
-            x.children[4].style.display = "none"
-            x.classList.remove("pledgeSectionSelected");
-        })
-    }
-
-    const showSelectedExtensionSection = (radioElement) =>{
-        if (radioElement.checked){
-            const selectedPledgeSection = radioElement.parentElement.parentElement.parentElement;
-            selectedPledgeSection.children[4].style.display = "block" //display the <hr> element
-            selectedPledgeSection.children[5].style.display = "block" //display the "lower section" element
-            selectedPledgeSection.classList.add("pledgeSectionSelected") // add className with different CSS styles to show highlighted section
-            const elementPosition = radioElement.parentElement.offsetTop - 150 //align the element to the middle of the viewport
-            console.log(radioElement)
-            window.scrollTo({
-                top: `${elementPosition}`,
-                left: 0,
-                behavior: 'smooth'
-              });
-        }
-    }
-
     // const radioBtnArray = document.getElementById("modal").getElementsByClassName("radio")
     // console.log(radioBtnArray)
     return(
@@ -61,7 +25,7 @@ const Modal = (props) => {
                     btnDisplay = "none"
                     radioDisplay = "inline"
                     btnText = "Continue"
-                    onChange = {updatePledgeExtension}
+                    onChange = {props.activeSection}
                 />
                 <PledgeSection
                     title = "Bamboo Stand"
@@ -72,7 +36,7 @@ const Modal = (props) => {
                     btnDisplay = "none"
                     radioDisplay = "inline"
                     btnText = "Continue"
-                    onChange = {updatePledgeExtension}
+                    onChange = {props.activeSection}
                 />
                 <PledgeSection
                     title = "Black Edition Stand"
@@ -83,7 +47,7 @@ const Modal = (props) => {
                     btnDisplay = "none"
                     radioDisplay = "inline"
                     btnText = "Continue"
-                    onChange = {updatePledgeExtension}
+                    onChange = {props.activeSection}
 
                 />
                 <PledgeSection
@@ -95,7 +59,7 @@ const Modal = (props) => {
                     btnDisplay = "none"
                     radioDisplay = "inline"
                     btnText = "Continue"
-                    onChange = {updatePledgeExtension}
+                    onChange = {props.activeSection}
 
                 />
             </div>

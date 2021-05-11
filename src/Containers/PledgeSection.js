@@ -15,7 +15,7 @@ const PledgeSection = (props) => {
         pledgeValue = props.value;
         leftText = " left"
     }
-    
+
         return(
             <div className="pledgeSection">
                 <div className="pledgeSectionHeader">
