@@ -25,35 +25,39 @@ class App extends Component{
     }
 
   componentDidMount(){
+    this.createProgressBar()
+    this.createStateLinkBtnsArrayAndEventListener()
+    this.createPledgeSubmitBtns()
+    this.createPledgeConfirmationBtn()
+  }
+
+  createProgressBar(){
     //convert values from state into $dollar value
     const progressBar = document.getElementById("progressBar");
     let dollarsBackedValue = Number(this.state.dollarsBacked);
     let progressBarPercent = (100*(dollarsBackedValue / this.state.projectTargetValue)) + "%";
     progressBar.style.width = progressBarPercent;
-
-    // add eventlistener to buttons on the About Project page
-    this.createStateLinkBtnsArrayAndEventListener()
-    this.createPledgeSubmitBtns()
-    const closePledgeConfirmationBtn = document.getElementsByClassName("btnPledgeConfirmed")[0]
-    closePledgeConfirmationBtn.addEventListener("click", ()=>{
-      document.getElementById("pledgeConfirmation").style.display = "none"
-      console.log(this.state.pledgesRemaining)
-      return;
-    })
   }
 
   createStateLinkBtnsArrayAndEventListener(){
+    // add eventlistener to buttons on the About Project page
     const btnsArray = Array.from(document.getElementsByClassName("btn"))
     let linkedBtns = [];
 
     btnsArray.forEach((btn) =>{
       for(let i = 1; i < btnsArray.length + 1; i++){
         if(btn.classList.contains("linkID"+i)){
-          btn.addEventListener("click", (e) => {
-            this.buttonClicked(e)
-          })
+            btn.addEventListener("click", (e) => {
+              const arrayIndex = this.getLinkId(e) -1
+              if(arrayIndex >= 1){
+                if(this.state.pledgesRemaining[arrayIndex-1] > 0){
+                  this.buttonClicked(e)
+                }
+              } else {
+                this.buttonClicked(e)
+              }
+            })
           linkedBtns.push(btn)
-
         }
       }
     })
@@ -78,12 +82,20 @@ class App extends Component{
     this.setState({linkedBtnsArray: linkedBtns})
   }
 
+  createPledgeConfirmationBtn(){
+    const closePledgeConfirmationBtn = document.getElementsByClassName("btnPledgeConfirmed")[0]
+    closePledgeConfirmationBtn.addEventListener("click", ()=>{
+      document.getElementById("pledgeConfirmation").style.display = "none"
+      return;
+    })
+  }
+
 
   buttonClicked(e){
     let linkId = this.getLinkId(e);
     const modalPledgeSectionSelectedRadio = document.getElementById("modal").getElementsByClassName("pledgeSection")[linkId-1].children[0].children[0].children[0];
     modalPledgeSectionSelectedRadio.checked = true;
-    this.openModal();
+    this.openModal()
     this.sectionSelected(modalPledgeSectionSelectedRadio)
   }
 
@@ -138,17 +150,21 @@ class App extends Component{
     const minimumPledge = pledgeValues[pledgeSectionIndex];
     if(!parseInt(inputValue)){
       alert("Please input a whole number greater than "+ minimumPledge)
+      e.target.parentElement.getElementsByClassName("pledgeInputBox")[0].children[0].value = ""
     } else if (inputValue >= minimumPledge){
       this.sumbitPledge(inputValue)
+      e.target.parentElement.getElementsByClassName("pledgeInputBox")[0].children[0].value = ""
       //reduce number of pledges remaining, for corresponding state, by 1
-      let myArray = this.state.pledgesRemaining
+      let pledgeArray = this.state.pledgesRemaining
       const pledgeIndex = pledgeSectionIndex-1;
-      let newValue = myArray[pledgeIndex] - 1;
-      myArray[pledgeIndex] = newValue;
+      let newValue = pledgeArray[pledgeIndex] - 1;
+      pledgeArray[pledgeIndex] = newValue;
 
-      this.setState({pledgesRemaining: myArray})
+      this.setState({pledgesRemaining: pledgeArray})
     } else {
       alert("You must pledge at least $"+minimumPledge)
+      e.target.parentElement.getElementsByClassName("pledgeInputBox")[0].children[0].value = ""
+
     }
   }
 
@@ -220,10 +236,10 @@ class App extends Component{
   render(){
 
     const updatePledgeExtension = (radioEvent) =>{
-      this.sectionSelected(radioEvent.target)
+        this.sectionSelected(radioEvent.target)
     }
-
-    let pledgesRemaining = this.state.pledgesRemaining;
+    // if(this.state.pledgesRemaining[2] === 0){
+    // }
 
     return(
       <div id="App" className="defaultTheme mobile">
@@ -231,8 +247,8 @@ class App extends Component{
         <article className="articleWrapper">
           <LandingCard />
           <DataInfoCard {...this.state} />
-          <AboutProjectCard pledgeValues={this.state.pledgeValues} pledgesRemaining={pledgesRemaining}/>
-          <Modal show={this.state.modalIsOpen} handleToUpdate={this.closeModal} activeSection={updatePledgeExtension} pledgeValues={this.state.pledgeValues} pledgesRemaining={pledgesRemaining}/>
+          <AboutProjectCard pledgeValues={this.state.pledgeValues} pledgesRemaining={this.state.pledgesRemaining}/>
+          <Modal show={this.state.modalIsOpen} handleToUpdate={this.closeModal} activeSection={updatePledgeExtension} pledgeValues={this.state.pledgeValues} pledgesRemaining={this.state.pledgesRemaining}/>
           <PledgeReceived />
         </article>
       </div>

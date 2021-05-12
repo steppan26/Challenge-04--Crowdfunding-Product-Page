@@ -6,8 +6,12 @@ import PledgeExtension from '../Components/PledgeExtension.js';
 
 const PledgeSection = (props) => {
     let backersValue = "";
-    let leftText = " left"
-    let subtitle = ""
+    let leftText = " left";
+    let subtitle = "";
+    let btnText = props.btnText
+    let btnColor = 'var(--clr-primary-cyan)'
+    let cardOpacity = "100%"
+    let radioState = false
 
     if(props.backersValueSize <= 0){
         backersValue = "";
@@ -24,35 +28,49 @@ const PledgeSection = (props) => {
         subtitle = "Pledge $"+ pledgeValue + " or more";
     }
 
+    if(props.backersValue === 0){
+        btnText = "Out of Stock"
+        btnColor = 'var(--clr-dark-gray)'
+        cardOpacity = "50%"
+        radioState = true
+    } else {
+        btnColor = 'var(--clr-primary-cyan)'
+        radioState = false
+    }
+
 
     return(
-        <div className="pledgeSection">
-            <div className="pledgeSectionHeader">
-                <RadioButton
-                    name="pledgeRadio"
-                    display={props.radioDisplay}
-                    onChange={props.onChange}
+        <div>
+                <div className="pledgeSection"
+                style={{opacity: cardOpacity}}>
+                    <div className="pledgeSectionHeader">
+                        <RadioButton
+                            name="pledgeRadio"
+                            display={props.radioDisplay}
+                            onChange={props.onChange}
+                            disabled={radioState}
+                            />
+                        <h2>{props.title}</h2>
+                        <h3>{subtitle}</h3>
+                    </div>
+                    <p className="pledgeText">{props.text}</p>
+                    <div className="valueWrapper">
+                        <h4 className="PledgeValue" style={{fontSize:props.valueSize}}>{backersValue}</h4>
+                        <h5> {leftText}</h5>
+                    </div>
+                    <Button className="btnPledge"
+                        display ={props.btnDisplay}
+                        bgColor={btnColor}
+                        textColor='white'
+                        fontSize = '1em'
+                        linkId={props.linkId}
+                        >{btnText}
+                    </Button>
+                    <hr className="pledgeDivider"/>
+                    <PledgeExtension
+                        ExtensionDisplay = {props.extensionDisplay}
                     />
-                <h2>{props.title}</h2>
-                <h3>{subtitle}</h3>
-            </div>
-            <p className="pledgeText">{props.text}</p>
-            <div className="valueWrapper">
-                <h4 className="PledgeValue" style={{fontSize:props.valueSize}}>{backersValue}</h4>
-                <h5> {leftText}</h5>
-            </div>
-            <Button className="btnPledge"
-                display ={props.btnDisplay}
-                bgColor='var(--clr-primary-cyan)'
-                textColor='white'
-                fontSize = '1em'
-                linkId={props.linkId}
-                >{props.btnText}
-            </Button>
-            <hr className="pledgeDivider"/>
-            <PledgeExtension
-                ExtensionDisplay = {props.extensionDisplay}
-            />
+                </div>
         </div>
     );
 }
