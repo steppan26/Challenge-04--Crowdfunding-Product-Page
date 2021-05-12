@@ -20,23 +20,29 @@ class App extends Component{
         modalIsOpen: false,
         linkedBtnsArray: [],
         pledgeValues: [0,25,75,200],
-        pledgesRemaining: [101,64,0]
+        pledgesRemaining: [101,64,0],
+        bookmarkIsOn: false
       }
     }
 
   componentDidMount(){
-    this.createProgressBar()
+    this.setProgressBar()
     this.createStateLinkBtnsArrayAndEventListener()
     this.createPledgeSubmitBtns()
     this.createPledgeConfirmationBtn()
+    this.setBookmarkClickEvent()
   }
 
-  createProgressBar(){
+  setProgressBar(){
     //convert values from state into $dollar value
     const progressBar = document.getElementById("progressBar");
-    let dollarsBackedValue = Number(this.state.dollarsBacked);
-    let progressBarPercent = (100*(dollarsBackedValue / this.state.projectTargetValue)) + "%";
-    progressBar.style.width = progressBarPercent;
+    let progressBarValue = (100*(Number(this.state.dollarsBacked / this.state.projectTargetValue)))
+    //stop bar from displaying further than 100%
+    if(progressBarValue >= 100){
+      progressBarValue = 100
+    }
+
+    progressBar.style.width = progressBarValue + "%";
   }
 
   createStateLinkBtnsArrayAndEventListener(){
@@ -90,6 +96,19 @@ class App extends Component{
     })
   }
 
+  setBookmarkClickEvent(){
+    const bookmarkIcon = document.getElementById("bookmarkBtnColor")
+    bookmarkIcon.addEventListener("click", () =>{
+      if(!this.state.bookmarkIsOn){
+        document.getElementById("bookmarkBtnColor").children[0].style.fill = "var(--clr-primary-cyan)"
+      } else {
+        document.getElementById("bookmarkBtnColor").children[0].style.fill = "#2F2F2F"
+      }
+      let bookmarkNewState = !this.state.bookmarkIsOn
+      this.setState({bookmarkIsOn: bookmarkNewState})
+    })
+  }
+
 
   buttonClicked(e){
     let linkId = this.getLinkId(e);
@@ -135,10 +154,11 @@ class App extends Component{
   }
 
   btnEventListner(e, pledgeValues){
-    //create inputBox array for easy selection
+    //Retrieve user-inputed value and assign to inputValue
     const inputValue = e.target.parentElement.getElementsByClassName("pledgeInputBox")[0].children[0].value;
     //get active pledge section position in pledgeSection array then once found add its index
-    //to pledgeSectionIndex
+    //to pledgeSectionIndex. This index value can then be used to obtain correct values in
+    //the relevant state arrays
     let pledgeSectionIndex = 0
     const pledgeSectionArray = Array.from(document.getElementById("modal").getElementsByClassName("pledgeSection"))
     pledgeSectionArray.forEach((pledgeSection, index) =>{
@@ -238,8 +258,6 @@ class App extends Component{
     const updatePledgeExtension = (radioEvent) =>{
         this.sectionSelected(radioEvent.target)
     }
-    // if(this.state.pledgesRemaining[2] === 0){
-    // }
 
     return(
       <div id="App" className="defaultTheme mobile">

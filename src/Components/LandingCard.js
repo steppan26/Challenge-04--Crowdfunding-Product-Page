@@ -5,6 +5,7 @@ import Button from '../Components/Button';
 import Bookmark from '../Components/Bookmark';
 
 const LandingCard = () => {
+
     return(
         <div className="landingCard card">
             <img src= {Logo} alt="mastercraft logo" className="masterclassLogo" />
