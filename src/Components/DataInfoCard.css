@@ -15,7 +15,8 @@
 }
 
 .divider{
-    height: 1px;border: none;
+    height: 1px;
+    border: none;
     background-color: var(--clr-dark-gray);
     width: 5em;
 }
@@ -34,4 +35,23 @@
     height: 0.9rem;
     background-color: var(--clr-primary-cyan);
     border-radius: 10px;
+}
+
+@media only screen and (min-width: 995px) {
+    .DataInfoCardWrapper{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 0.7em;
+        text-align: center;
+    }
+    .divider{
+        height: 5em;
+        width: 1px;
+        margin: 0 1em;
+    }
+    #projectProgressBar{
+        width: 100%;
+    }
 }

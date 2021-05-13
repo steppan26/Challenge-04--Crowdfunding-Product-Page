@@ -24,7 +24,6 @@
 .valueWrapper{
     display: flex;
     align-items: center;
-    height: fit-content;
     margin-bottom: 2em;
 }
 
@@ -91,3 +90,35 @@
     padding: 0;
 }
 
+@media only screen and (min-width: 995px) {
+    .pledgeSection{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: fit-content;
+    }
+    .pledgeSectionHeader{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        margin: 1em 0;
+    }
+    .pledgeSectionHeader>h2{
+        margin-right: auto;
+    }
+    .valueWrapper{
+        width: fit-content;
+        margin-right: auto;
+        margin-bottom: auto;
+    }
+    .btnPledge{
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        height: fit-content;
+    }
+    .pledgeDivider{
+        position: relative;
+        width: 100%;
+        left: 0;
+    }
+}

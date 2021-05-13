@@ -53,21 +53,23 @@ class App extends Component{
     btnsArray.forEach((btn) =>{
       for(let i = 1; i < btnsArray.length + 1; i++){
         if(btn.classList.contains("linkID"+i)){
-            btn.addEventListener("click", (e) => {
-              const arrayIndex = this.getLinkId(e) -1
-              if(arrayIndex >= 1){
-                if(this.state.pledgesRemaining[arrayIndex-1] > 0){
-                  this.buttonClicked(e)
-                }
-              } else {
-                this.buttonClicked(e)
-              }
-            })
+            btn.addEventListener("click", (e) => this.pledgeBtnEvent(e) )
           linkedBtns.push(btn)
         }
       }
     })
     this.setState({linkedBtnsArray: linkedBtns})
+  }
+
+pledgeBtnEvent(e){
+    const arrayIndex = this.getLinkId(e) -1
+    if(arrayIndex >= 1){
+      if(this.state.pledgesRemaining[arrayIndex-1] > 0){
+        this.buttonClicked(e)
+      }
+    } else {
+      this.buttonClicked(e)
+    }
   }
 
   createPledgeSubmitBtns(){
@@ -98,11 +100,19 @@ class App extends Component{
 
   setBookmarkClickEvent(){
     const bookmarkIcon = document.getElementById("bookmarkBtnColor")
+    bookmarkIcon.removeEventListener("click", (e) => this.pledgeBtnEvent(e) )
     bookmarkIcon.addEventListener("click", () =>{
       if(!this.state.bookmarkIsOn){
-        document.getElementById("bookmarkBtnColor").children[0].style.fill = "var(--clr-primary-cyan)"
+        document.getElementById("bookmarkBtnColor").children[0].style.fill = "var(--clr-secondary-cyan)"
+        document.getElementById("bookmarkBtnColor").parentElement.previousSibling.innerHTML = "Bookmarked"
+        document.getElementById("bookmarkBtnColor").parentElement.previousSibling.style.color = "var(--clr-secondary-cyan)"
+console.log(document.getElementById("bookmarkBtnColor").parentElement.previousSibling.style.color)
       } else {
         document.getElementById("bookmarkBtnColor").children[0].style.fill = "#2F2F2F"
+        document.getElementById("bookmarkBtnColor").parentElement.previousSibling.innerHTML = "Bookmark"
+        document.getElementById("bookmarkBtnColor").parentElement.previousSibling.style.color = "#2F2F2F"
+      console.log(document.getElementById("bookmarkBtnColor").parentElement.previousSibling.style.color)
+
       }
       let bookmarkNewState = !this.state.bookmarkIsOn
       this.setState({bookmarkIsOn: bookmarkNewState})
@@ -260,7 +270,7 @@ class App extends Component{
     }
 
     return(
-      <div id="App" className="defaultTheme mobile">
+      <div id="App" className="defaultTheme">
         <Navbar />
         <article className="articleWrapper">
           <LandingCard />

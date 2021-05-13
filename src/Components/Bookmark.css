@@ -1,4 +1,40 @@
 #bookmarkBtn{
     position: relative;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.btnBookmark{
+    display: none;
+    order: 2;
+    z-index: 1;
+    padding-left: 60px;
+    transform: translateX(-50px);
+}
+
+.btnBookmark:hover{
+    background-color: whitesmoke !important;
+}
+
+.bookmarkLogo{
+    margin-left: auto;
+    order: 1;
+    z-index: 2;
+}
+
+@media only screen and (min-width: 995px) {
+    .btnBookmark{
+        display: inline;
+        color: #2F2F2F;
+
+    }
+
+    .bookmarkLogo{
+        order: 1;
+        z-index: 2;
+    }
+    #bookmarkBtnColor>circle{
+        fill: hsla(0, 0, 50%, 1);
+    }
 }

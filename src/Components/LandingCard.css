@@ -36,3 +36,14 @@
 .btnsSection .btn{
     font-size: larger;
 }
+
+@media only screen and (min-width: 995px) {
+    .landingCard>h2{
+        margin-bottom: 0.5em;
+        line-height: normal;
+    }
+    .btnsSection{
+        padding: 1em;
+        font-size: 0.9rem;
+    }
+}

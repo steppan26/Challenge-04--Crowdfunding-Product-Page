@@ -15,7 +15,7 @@ const DataInfoCard = (props) =>{
         <div className="card DataInfoCardWrapper">
             <div>
                 <h1>{dollarsBacked}</h1>
-                    <p>of {projectTarget}</p>
+                    <p>of {projectTarget} backed</p>
             </div>
             <hr className="divider" />
             <div>

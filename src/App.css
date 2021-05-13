@@ -1,7 +1,7 @@
 :root{
     box-sizing: border-box;
 }
-.mobile{
+#App{
     background-image: url("./images/image-hero-mobile.jpg");
     background-position: 50% -5px;
     background-repeat: no-repeat;
@@ -52,8 +52,21 @@
     padding: 1em 1.5em;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 995px) {
     .articleWrapper{
-        flex-direction: row;
+        width: 50%;
+    }
+    #App{
+        margin: 0;
+        max-width: 100%;
+        width: 100%;
+        background-image: url("./images/image-hero-desktop.jpg");
+        background-position: 50% -5px;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-size: contain;
+    }
+    .card{
+        padding: 1em 3em;
     }
 }

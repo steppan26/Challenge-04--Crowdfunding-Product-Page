@@ -45,3 +45,12 @@
     justify-content: center;
     z-index: -10;
 }
+
+@media only screen and (min-width: 995px) {
+    .modalContainer{
+        width: 50%;
+    }
+    #modal>.valueWrapper{
+        order: -1;
+    }
+}
