@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/Challenge-04--Crowdfunding-Product-Page/static/css/main.be83a268.chunk.css",
-    "main.js": "/Challenge-04--Crowdfunding-Product-Page/static/js/main.5942d071.chunk.js",
-    "main.js.map": "/Challenge-04--Crowdfunding-Product-Page/static/js/main.5942d071.chunk.js.map",
+    "main.js": "/Challenge-04--Crowdfunding-Product-Page/static/js/main.10063802.chunk.js",
+    "main.js.map": "/Challenge-04--Crowdfunding-Product-Page/static/js/main.10063802.chunk.js.map",
     "runtime-main.js": "/Challenge-04--Crowdfunding-Product-Page/static/js/runtime-main.9f4aa18b.js",
     "runtime-main.js.map": "/Challenge-04--Crowdfunding-Product-Page/static/js/runtime-main.9f4aa18b.js.map",
     "static/js/2.97ae1e83.chunk.js": "/Challenge-04--Crowdfunding-Product-Page/static/js/2.97ae1e83.chunk.js",
@@ -24,6 +24,6 @@
     "static/js/runtime-main.9f4aa18b.js",
     "static/js/2.97ae1e83.chunk.js",
     "static/css/main.be83a268.chunk.css",
-    "static/js/main.5942d071.chunk.js"
+    "static/js/main.10063802.chunk.js"
   ]
 }
