@@ -28,7 +28,10 @@ const DataInfoCard = (props) =>{
                 <p>days left</p>
             </div>
             <div id="projectProgressBar">
-                <div id="progressBar"></div>
+                <div id="progressBar"
+                style={{
+                    width: `${props.progressBarFill}%`
+                }}></div>
             </div>
         </div>
     );

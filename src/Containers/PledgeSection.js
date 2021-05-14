@@ -12,6 +12,7 @@ const PledgeSection = (props) => {
     let btnColor = 'var(--clr-primary-cyan)'
     let cardOpacity = "100%"
     let radioState = false
+    let className = "pledgeSection " + props.className
 
     if(props.backersValueSize <= 0){
         backersValue = "";
@@ -38,23 +39,22 @@ const PledgeSection = (props) => {
         radioState = false
     }
 
-
     return(
         <div>
-                <div className="pledgeSection"
-                style={{opacity: cardOpacity}}>
-                    <div className="pledgeSectionHeader">
+                <div className={className}
+                    style={{opacity: cardOpacity}}>
+                    <div className="pledgeSectionHeader" style={{headerOrder: `${props.order}`}}>
                         <RadioButton
                             name="pledgeRadio"
                             display={props.radioDisplay}
                             onChange={props.onChange}
                             disabled={radioState}
                             />
-                        <h2>{props.title}</h2>
+                        <h2 onClick={props.headerClicked}>{props.title}</h2>
                         <h3>{subtitle}</h3>
                     </div>
-                    <p className="pledgeText">{props.text}</p>
-                    <div className="valueWrapper">
+                    <p className="pledgeText" style={{textOrder: `${props.order}`}}>{props.text}</p>
+                    <div className="valueWrapper" style={{priceOrder: `${props.order}`}}>
                         <h4 className="PledgeValue" style={{fontSize:props.valueSize}}>{backersValue}</h4>
                         <h5> {leftText}</h5>
                     </div>

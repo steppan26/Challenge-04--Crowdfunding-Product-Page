@@ -1,5 +1,6 @@
 .lowerSection{
     display: none;
+    flex-direction: column;
     padding: 0.2em 1.2em 1em 1.2em;
     height: min-content;
 }
@@ -46,4 +47,17 @@
 .pledgeInputBox>input:focus{
     outline: none;
     border: none;
+}
+
+@media only screen and (min-width: 995px) {
+    .lowerSection{
+        padding-top: 2em;
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .inputs{
+        margin-left: auto;
+        width: fit-content;
+    }
 }

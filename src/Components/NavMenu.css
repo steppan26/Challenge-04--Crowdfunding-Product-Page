@@ -24,3 +24,29 @@
 .push{
     margin-left: auto;
 }
+
+@media only screen and (min-width: 995px) {
+    .menuWrapper{
+        display: flex;
+        position: relative;
+        flex-direction: row;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        align-items: center;
+        justify-content: flex-end;
+
+    }
+    .menuWrapper>a{
+        font-size: 0.85em;
+        color: whitesmoke;
+        box-shadow: none;
+        padding: 0 1em;
+
+    }
+
+}

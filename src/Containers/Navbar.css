@@ -37,5 +37,15 @@ nav>img{
     nav{
         max-width: 100%;
         padding: 0 5em;
+        justify-content: space-between;
+        padding: 0 8em;
+    }
+    .menuIcon{
+        display: none;
+    }
+
+    .logo{
+        margin-right: 0;
+        padding-left: 1em;
     }
 }

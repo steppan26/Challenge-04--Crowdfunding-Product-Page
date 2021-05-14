@@ -21,7 +21,8 @@ class App extends Component{
         linkedBtnsArray: [],
         pledgeValues: [0,25,75,200],
         pledgesRemaining: [101,64,0],
-        bookmarkIsOn: false
+        bookmarkIsOn: false,
+        progressBarFill: 0,
       }
     }
 
@@ -35,14 +36,12 @@ class App extends Component{
 
   setProgressBar(){
     //convert values from state into $dollar value
-    const progressBar = document.getElementById("progressBar");
     let progressBarValue = (100*(Number(this.state.dollarsBacked / this.state.projectTargetValue)))
     //stop bar from displaying further than 100%
     if(progressBarValue >= 100){
       progressBarValue = 100
     }
-
-    progressBar.style.width = progressBarValue + "%";
+    this.setState({progressBarFill: progressBarValue})
   }
 
   createStateLinkBtnsArrayAndEventListener(){
@@ -61,7 +60,7 @@ class App extends Component{
     this.setState({linkedBtnsArray: linkedBtns})
   }
 
-pledgeBtnEvent(e){
+  pledgeBtnEvent(e){
     const arrayIndex = this.getLinkId(e) -1
     if(arrayIndex >= 1){
       if(this.state.pledgesRemaining[arrayIndex-1] > 0){
@@ -99,19 +98,17 @@ pledgeBtnEvent(e){
   }
 
   setBookmarkClickEvent(){
-    const bookmarkIcon = document.getElementById("bookmarkBtnColor")
+    const bookmarkIcon = document.getElementById("bookmarkBtn")
     bookmarkIcon.removeEventListener("click", (e) => this.pledgeBtnEvent(e) )
     bookmarkIcon.addEventListener("click", () =>{
       if(!this.state.bookmarkIsOn){
         document.getElementById("bookmarkBtnColor").children[0].style.fill = "var(--clr-secondary-cyan)"
         document.getElementById("bookmarkBtnColor").parentElement.previousSibling.innerHTML = "Bookmarked"
         document.getElementById("bookmarkBtnColor").parentElement.previousSibling.style.color = "var(--clr-secondary-cyan)"
-console.log(document.getElementById("bookmarkBtnColor").parentElement.previousSibling.style.color)
       } else {
         document.getElementById("bookmarkBtnColor").children[0].style.fill = "#2F2F2F"
         document.getElementById("bookmarkBtnColor").parentElement.previousSibling.innerHTML = "Bookmark"
         document.getElementById("bookmarkBtnColor").parentElement.previousSibling.style.color = "#2F2F2F"
-      console.log(document.getElementById("bookmarkBtnColor").parentElement.previousSibling.style.color)
 
       }
       let bookmarkNewState = !this.state.bookmarkIsOn
@@ -146,8 +143,8 @@ console.log(document.getElementById("bookmarkBtnColor").parentElement.previousSi
 
   showSelectedExtensionSection(radioElement){
     const selectedPledgeSection = radioElement.parentElement.parentElement.parentElement;
-    selectedPledgeSection.children[4].style.display = "block" //display the <hr> element
-    selectedPledgeSection.children[5].style.display = "block" //display the "lower section" element
+    selectedPledgeSection.children[4].style.display = "flex" //display the <hr> element
+    selectedPledgeSection.children[5].style.display = "flex" //display the "lower section" element
     selectedPledgeSection.classList.add("pledgeSectionSelected") // add className with different CSS styles to show highlighted section
     this.activateInputs(selectedPledgeSection)
   }
@@ -209,6 +206,9 @@ console.log(document.getElementById("bookmarkBtnColor").parentElement.previousSi
     //increase number of backers in state by 1
     let newBackersTotal = this.state.totalBackers + 1
     this.setState({totalBackers: newBackersTotal})
+
+    //update the progress bar
+    this.setProgressBar()
   }
 
   getPledgeValuesArray(){
@@ -240,7 +240,7 @@ console.log(document.getElementById("bookmarkBtnColor").parentElement.previousSi
   }
 
   openModal = () => {
-    document.getElementById("modal").style.display = "block";
+    document.getElementById("modal").style.display = "flex";
     this.setState({
       modalIsOpen: true
     })
@@ -265,8 +265,21 @@ console.log(document.getElementById("bookmarkBtnColor").parentElement.previousSi
 
   render(){
 
+    const headerClicked = (e) =>{
+      e.target.parentElement.children[0].children[0].checked = !e.target.parentElement.children[0].children[0].checked
+      if(e.target.parentElement.children[0].children[0].checked){
+        this.sectionSelected(e.target.parentElement.children[0].children[0])
+      } else {
+        this.hideAllExtensions()
+      }
+    }
+
     const updatePledgeExtension = (radioEvent) =>{
+      if(radioEvent.target.checked){
         this.sectionSelected(radioEvent.target)
+      } else {
+        this.hideAllExtensions()
+      }
     }
 
     return(
@@ -276,7 +289,14 @@ console.log(document.getElementById("bookmarkBtnColor").parentElement.previousSi
           <LandingCard />
           <DataInfoCard {...this.state} />
           <AboutProjectCard pledgeValues={this.state.pledgeValues} pledgesRemaining={this.state.pledgesRemaining}/>
-          <Modal show={this.state.modalIsOpen} handleToUpdate={this.closeModal} activeSection={updatePledgeExtension} pledgeValues={this.state.pledgeValues} pledgesRemaining={this.state.pledgesRemaining}/>
+          <Modal
+          show={this.state.modalIsOpen}
+          handleToUpdate={this.closeModal}
+          activeSection={updatePledgeExtension}
+          pledgeValues={this.state.pledgeValues}
+          pledgesRemaining={this.state.pledgesRemaining}
+          headerClicked = {headerClicked}
+          />
           <PledgeReceived />
         </article>
       </div>
