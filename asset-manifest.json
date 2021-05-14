@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Challenge-04--Crowdfunding-Product-Page/static/css/main.60bd8823.chunk.css",
+    "main.css": "/Challenge-04--Crowdfunding-Product-Page/static/css/main.28495dd5.chunk.css",
     "main.js": "/Challenge-04--Crowdfunding-Product-Page/static/js/main.88dac7bc.chunk.js",
     "main.js.map": "/Challenge-04--Crowdfunding-Product-Page/static/js/main.88dac7bc.chunk.js.map",
     "runtime-main.js": "/Challenge-04--Crowdfunding-Product-Page/static/js/runtime-main.9f4aa18b.js",
@@ -10,7 +10,7 @@
     "static/js/3.bb412a47.chunk.js": "/Challenge-04--Crowdfunding-Product-Page/static/js/3.bb412a47.chunk.js",
     "static/js/3.bb412a47.chunk.js.map": "/Challenge-04--Crowdfunding-Product-Page/static/js/3.bb412a47.chunk.js.map",
     "index.html": "/Challenge-04--Crowdfunding-Product-Page/index.html",
-    "static/css/main.60bd8823.chunk.css.map": "/Challenge-04--Crowdfunding-Product-Page/static/css/main.60bd8823.chunk.css.map",
+    "static/css/main.28495dd5.chunk.css.map": "/Challenge-04--Crowdfunding-Product-Page/static/css/main.28495dd5.chunk.css.map",
     "static/js/2.97ae1e83.chunk.js.LICENSE.txt": "/Challenge-04--Crowdfunding-Product-Page/static/js/2.97ae1e83.chunk.js.LICENSE.txt",
     "static/media/icon-check.bdee5269.svg": "/Challenge-04--Crowdfunding-Product-Page/static/media/icon-check.bdee5269.svg",
     "static/media/icon-close-menu.32169d31.svg": "/Challenge-04--Crowdfunding-Product-Page/static/media/icon-close-menu.32169d31.svg",
@@ -23,7 +23,7 @@
   "entrypoints": [
     "static/js/runtime-main.9f4aa18b.js",
     "static/js/2.97ae1e83.chunk.js",
-    "static/css/main.60bd8823.chunk.css",
+    "static/css/main.28495dd5.chunk.css",
     "static/js/main.88dac7bc.chunk.js"
   ]
 }
