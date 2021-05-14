@@ -25,7 +25,7 @@
     margin-left: auto;
 }
 
-@media only screen and (min-width: 995px) {
+@media only screen and (min-width: 1080px) {
     .menuWrapper{
         display: flex;
         position: relative;

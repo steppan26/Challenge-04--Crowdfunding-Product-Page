@@ -49,7 +49,7 @@
     border: none;
 }
 
-@media only screen and (min-width: 995px) {
+@media only screen and (min-width: 1080px) {
     .lowerSection{
         padding-top: 2em;
         width: 100%;

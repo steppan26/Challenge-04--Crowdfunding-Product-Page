@@ -21,12 +21,14 @@
     margin-left: auto;
     order: 1;
     z-index: 2;
-    transform: translateX(50px);
 }
 
-@media only screen and (min-width: 995px) {
+@media only screen and (min-width: 1080px) {
     .btnBookmark{
         display: inline;
         color: #2F2F2F;
+    }
+    .bookmarkLogo{
+        transform: translateX(50px);
     }
 }

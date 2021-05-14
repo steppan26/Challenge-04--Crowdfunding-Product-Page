@@ -52,7 +52,7 @@
     padding: 1em 1.5em;
 }
 
-@media only screen and (min-width: 995px) {
+@media only screen and (min-width: 1080px) {
     .articleWrapper{
         width: 50%;
     }

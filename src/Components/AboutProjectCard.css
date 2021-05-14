@@ -17,7 +17,7 @@
     border: 1px solid var(--clr-dark-gray);
 }
 
-@media only screen and (min-width: 995px) {
+@media only screen and (min-width: 1080px) {
     .aboutProject{
         font-size: 0.9em;
         font-weight: var(--ff-wght-button);
