@@ -34,7 +34,7 @@
     font-size: 0.75rem;
 }
 
-.pledgeInputBox>input{
+.pledgeInputBox>label>input{
     width: 40px;
     appearance: none;
     border: none;
@@ -44,7 +44,7 @@
     padding-left: 0.5em;
 }
 
-.pledgeInputBox>input:focus{
+.pledgeInputBox>label>input:focus{
     outline: none;
     border: none;
 }

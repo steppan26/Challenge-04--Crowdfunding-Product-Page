@@ -8,7 +8,7 @@ const PledgeExtension = (props) =>{
             <p>Enter your pledge</p>
             <div className="inputs">
                 <span className="pledgeInputBox">
-                    $ <input type="text" name="pledgeInput" autoFocus />
+                    $ <label htmlFor="pledgeInput"><input type="text" name="pledgeInput" id="pledgeInput" autoFocus /></label>
                 </span>
                 <Button className="btnPledge"
                     display ="inline"

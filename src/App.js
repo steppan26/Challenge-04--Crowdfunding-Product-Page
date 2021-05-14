@@ -162,7 +162,7 @@ class App extends Component{
 
   btnEventListner(e, pledgeValues){
     //Retrieve user-inputed value and assign to inputValue
-    const inputValue = e.target.parentElement.getElementsByClassName("pledgeInputBox")[0].children[0].value;
+    const inputValue = e.target.parentElement.getElementsByClassName("pledgeInputBox")[0].children[0].children[0].value;
     //get active pledge section position in pledgeSection array then once found add its index
     //to pledgeSectionIndex. This index value can then be used to obtain correct values in
     //the relevant state arrays
@@ -176,11 +176,11 @@ class App extends Component{
 
     const minimumPledge = pledgeValues[pledgeSectionIndex];
     if(!parseInt(inputValue)){
-      alert("Please input a whole number greater than "+ minimumPledge)
-      e.target.parentElement.getElementsByClassName("pledgeInputBox")[0].children[0].value = ""
+      // alert("Please input a whole number greater than "+ minimumPledge)
+      e.target.parentElement.getElementsByClassName("pledgeInputBox")[0].children[0].children[0].value = ""
     } else if (inputValue >= minimumPledge){
       this.sumbitPledge(inputValue)
-      e.target.parentElement.getElementsByClassName("pledgeInputBox")[0].children[0].value = ""
+      e.target.parentElement.getElementsByClassName("pledgeInputBox")[0].children[0].children[0].value = ""
       //reduce number of pledges remaining, for corresponding state, by 1
       let pledgeArray = this.state.pledgesRemaining
       const pledgeIndex = pledgeSectionIndex-1;
@@ -189,8 +189,8 @@ class App extends Component{
 
       this.setState({pledgesRemaining: pledgeArray})
     } else {
-      alert("You must pledge at least $"+minimumPledge)
-      e.target.parentElement.getElementsByClassName("pledgeInputBox")[0].children[0].value = ""
+      // alert("You must pledge at least $"+minimumPledge)
+      e.target.parentElement.getElementsByClassName("pledgeInputBox")[0].children[0].children[0].value = ""
 
     }
   }
