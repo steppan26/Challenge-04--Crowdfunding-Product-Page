@@ -55,7 +55,7 @@ const PledgeSection = (props) => {
                     </div>
                     <p className="pledgeText" style={{textOrder: `${props.order}`}}>{props.text}</p>
                     <div className="valueWrapper" style={{priceOrder: `${props.order}`}}>
-                        <h4 className="PledgeValue" style={{fontSize:props.valueSize}}>{backersValue}</h4>
+                        <h4 className="pledgeValue" style={{fontSize:props.valueSize}}>{backersValue}</h4>
                         <h5> {leftText}</h5>
                     </div>
                     <Button className="btnPledge"
